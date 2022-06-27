@@ -1,0 +1,24 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+lovelace:
+  mode: yaml
+
+
+##############################
+######## INCLUDES ############
+##############################
+
+input_number: !include input_numbers.yaml
+input_datetime: !include input_datetime.yaml
+input_select: !include input_select.yaml
+binary_sensor: !include binary_sensors.yaml
+sensor: !include_dir_merge_list sensors/
+switch: !include switches.yaml
+automation: !include_dir_merge_list automations/
+recorder: !include recorder.yaml
+script: !include scripts.yaml
+
+#
+

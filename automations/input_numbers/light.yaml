@@ -1,0 +1,22 @@
+#test_light_illumination
+  - alias: "Set light_illumination input_number"
+    trigger:
+      platform: mqtt
+      topic: "greenhouse/light/sensors/illumination"
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.test_light_illumination
+      data:
+        value: "{{ trigger.payload_json.state }}"
+
+  - alias: "light_illumination input_number changed"
+    trigger:
+      platform: state
+      entity_id: input_number.test_light_illumination
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/light/sensors/illumination"
+        retain: true
+        payload: "{\"name\": \"illumination sensor\",  \"state\": {{states('input_number.test_light_illumination') | int}}}"

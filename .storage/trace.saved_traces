@@ -1,0 +1,580 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "trace.saved_traces",
+    "data": {
+        "automation.None": [
+            {
+                "extended_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "3c161c3ce54f14faca4e3f1010bcecde",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.005906+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern",
+                    "trace": {
+                        "trigger/0": [
+                            {
+                                "path": "trigger/0",
+                                "timestamp": "2022-06-26T04:35:56.005929+00:00",
+                                "changed_variables": {
+                                    "this": {
+                                        "entity_id": "automation.turn_on_lamps",
+                                        "state": "on",
+                                        "attributes": {
+                                            "last_triggered": "2022-06-21T17:30:50.294426+00:00",
+                                            "mode": "single",
+                                            "current": 0,
+                                            "friendly_name": "Turn ON lamps"
+                                        },
+                                        "last_changed": "2022-06-26T02:51:04.353465+00:00",
+                                        "last_updated": "2022-06-26T02:51:04.353465+00:00",
+                                        "context": {
+                                            "id": "01G6EYPYS1EEN1G2NDGPW4GV19",
+                                            "parent_id": null,
+                                            "user_id": null
+                                        }
+                                    },
+                                    "trigger": {
+                                        "id": "0",
+                                        "idx": "0",
+                                        "platform": "time_pattern",
+                                        "now": "2022-06-26T07:35:56.002814+03:00",
+                                        "description": "time pattern"
+                                    }
+                                }
+                            }
+                        ],
+                        "condition/0": [
+                            {
+                                "path": "condition/0",
+                                "timestamp": "2022-06-26T04:35:56.005951+00:00",
+                                "result": {
+                                    "result": false,
+                                    "entities": [
+                                        "input_number.config_light_illumination_check_interval"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "config": {
+                        "alias": "Turn ON lamps",
+                        "trigger": [
+                            {
+                                "platform": "time_pattern",
+                                "seconds": "/1"
+                            }
+                        ],
+                        "condition": [
+                            {
+                                "condition": "template",
+                                "value_template": "{{ now().second % states('input_number.config_light_illumination_check_interval')|int == 0 }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ (now().strftime('%H:%M:%S') > states('input_datetime.config_light_daylight_start')) and (now().strftime('%H:%M:%S') < states('input_datetime.config_light_daylight_end')) }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ (states('sensor.illumination_sensor') | int) < (states('input_number.config_light_illumination_on_treshold') | int) }}\n"
+                            }
+                        ],
+                        "action": {
+                            "service": "mqtt.publish",
+                            "data": {
+                                "topic": "greenhouse/light/devices/lamps",
+                                "payload": "{{{'name': 'lamps',  'state': 'ON'} | to_json}}"
+                            }
+                        }
+                    },
+                    "blueprint_inputs": null,
+                    "context": {
+                        "id": "01G6F4PYZ5664B67V83938VAYQ",
+                        "parent_id": null,
+                        "user_id": null
+                    }
+                },
+                "short_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "3c161c3ce54f14faca4e3f1010bcecde",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.005906+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern"
+                }
+            },
+            {
+                "extended_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "9a91ac7bb1de09380df4bdb463fd41ef",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.006112+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern",
+                    "trace": {
+                        "trigger/0": [
+                            {
+                                "path": "trigger/0",
+                                "timestamp": "2022-06-26T04:35:56.006135+00:00",
+                                "changed_variables": {
+                                    "this": {
+                                        "entity_id": "automation.turn_off_covers",
+                                        "state": "on",
+                                        "attributes": {
+                                            "last_triggered": "2022-06-21T23:30:15.049573+00:00",
+                                            "mode": "single",
+                                            "current": 0,
+                                            "friendly_name": "Turn OFF covers"
+                                        },
+                                        "last_changed": "2022-06-26T02:51:04.353089+00:00",
+                                        "last_updated": "2022-06-26T02:51:04.353089+00:00",
+                                        "context": {
+                                            "id": "01G6EYPYS17H2GPB1MTBX7TBX9",
+                                            "parent_id": null,
+                                            "user_id": null
+                                        }
+                                    },
+                                    "trigger": {
+                                        "id": "0",
+                                        "idx": "0",
+                                        "platform": "time_pattern",
+                                        "now": "2022-06-26T07:35:56.002893+03:00",
+                                        "description": "time pattern"
+                                    }
+                                }
+                            }
+                        ],
+                        "condition/0": [
+                            {
+                                "path": "condition/0",
+                                "timestamp": "2022-06-26T04:35:56.006157+00:00",
+                                "result": {
+                                    "result": false,
+                                    "entities": [
+                                        "input_number.config_air_covers_check_interval"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "config": {
+                        "alias": "Turn OFF covers",
+                        "trigger": [
+                            {
+                                "platform": "time_pattern",
+                                "seconds": "/1"
+                            }
+                        ],
+                        "condition": [
+                            {
+                                "condition": "template",
+                                "value_template": "{{ now().second % states('input_number.config_air_covers_check_interval')|int == 0 }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ is_state('sensor.emergency_sensor', 'Off') }}\n"
+                            },
+                            {
+                                "condition": "or",
+                                "conditions": [
+                                    {
+                                        "condition": "template",
+                                        "value_template": "{{ (states('sensor.collective_air_temperature_sensor') | int) < (states('input_number.config_air_covers_off_temp_treshold') | int) }}\n"
+                                    },
+                                    {
+                                        "condition": "template",
+                                        "value_template": "{{ (states('sensor.air_moisture_sensor') | int) < (states('input_number.config_air_covers_off_moisture_treshold') | int) }}\n"
+                                    }
+                                ]
+                            }
+                        ],
+                        "action": {
+                            "service": "mqtt.publish",
+                            "data": {
+                                "topic": "greenhouse/air/devices/covers",
+                                "payload": "{{{'name': 'covers',  'state': 'OFF'} | to_json}}"
+                            }
+                        }
+                    },
+                    "blueprint_inputs": null,
+                    "context": {
+                        "id": "01G6F4PYZ6CTN1EHK1GEZC724Y",
+                        "parent_id": null,
+                        "user_id": null
+                    }
+                },
+                "short_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "9a91ac7bb1de09380df4bdb463fd41ef",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.006112+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern"
+                }
+            },
+            {
+                "extended_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "d4b67ead789cb765d3850e05dacc3f4e",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.006324+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern",
+                    "trace": {
+                        "trigger/0": [
+                            {
+                                "path": "trigger/0",
+                                "timestamp": "2022-06-26T04:35:56.006346+00:00",
+                                "changed_variables": {
+                                    "this": {
+                                        "entity_id": "automation.turn_off_first_temp_sensor",
+                                        "state": "on",
+                                        "attributes": {
+                                            "last_triggered": "2022-06-20T15:16:50.010636+00:00",
+                                            "mode": "single",
+                                            "current": 0,
+                                            "friendly_name": "Turn OFF first temp sensor"
+                                        },
+                                        "last_changed": "2022-06-26T02:51:04.341859+00:00",
+                                        "last_updated": "2022-06-26T02:51:04.341859+00:00",
+                                        "context": {
+                                            "id": "01G6EYPYRNK86PCGXH2132Z8YE",
+                                            "parent_id": null,
+                                            "user_id": null
+                                        }
+                                    },
+                                    "trigger": {
+                                        "id": "0",
+                                        "idx": "0",
+                                        "platform": "time_pattern",
+                                        "now": "2022-06-26T07:35:56.002968+03:00",
+                                        "description": "time pattern"
+                                    }
+                                }
+                            }
+                        ],
+                        "condition/0": [
+                            {
+                                "path": "condition/0",
+                                "timestamp": "2022-06-26T04:35:56.006368+00:00",
+                                "result": {
+                                    "result": false,
+                                    "entities": [
+                                        "input_number.config_air_temperature_delta_check_interval"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "config": {
+                        "alias": "Turn OFF first temp sensor",
+                        "trigger": [
+                            {
+                                "platform": "time_pattern",
+                                "seconds": "/1"
+                            }
+                        ],
+                        "condition": [
+                            {
+                                "condition": "template",
+                                "value_template": "{{ now().second % states('input_number.config_air_temperature_delta_check_interval')|int == 0 }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ is_state('switch.t1_sensor_state', 'on') }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ (is_state('sensor.first_second', 'False') and is_state('sensor.first_third', 'False')) == true }}\n"
+                            }
+                        ],
+                        "action": {
+                            "service": "switch.turn_off",
+                            "entity_id": [
+                                "switch.t1_sensor_state"
+                            ]
+                        }
+                    },
+                    "blueprint_inputs": null,
+                    "context": {
+                        "id": "01G6F4PYZ6TH0TQ9XQJK6CSYV3",
+                        "parent_id": null,
+                        "user_id": null
+                    }
+                },
+                "short_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "d4b67ead789cb765d3850e05dacc3f4e",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.006324+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern"
+                }
+            },
+            {
+                "extended_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "57b808807f8b924a13b4f974e721a8de",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.006607+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern",
+                    "trace": {
+                        "trigger/0": [
+                            {
+                                "path": "trigger/0",
+                                "timestamp": "2022-06-26T04:35:56.006651+00:00",
+                                "changed_variables": {
+                                    "this": {
+                                        "entity_id": "automation.turn_on_irrigation",
+                                        "state": "on",
+                                        "attributes": {
+                                            "last_triggered": "2022-06-23T15:34:30.016568+00:00",
+                                            "mode": "single",
+                                            "current": 0,
+                                            "friendly_name": "Turn ON irrigation"
+                                        },
+                                        "last_changed": "2022-06-26T02:51:04.354016+00:00",
+                                        "last_updated": "2022-06-26T02:51:04.354016+00:00",
+                                        "context": {
+                                            "id": "01G6EYPYS21ZGD1N6MP2G5YYG4",
+                                            "parent_id": null,
+                                            "user_id": null
+                                        }
+                                    },
+                                    "trigger": {
+                                        "id": "0",
+                                        "idx": "0",
+                                        "platform": "time_pattern",
+                                        "now": "2022-06-26T07:35:56.003045+03:00",
+                                        "description": "time pattern"
+                                    }
+                                }
+                            }
+                        ],
+                        "condition/0": [
+                            {
+                                "path": "condition/0",
+                                "timestamp": "2022-06-26T04:35:56.006677+00:00",
+                                "result": {
+                                    "result": false,
+                                    "entities": [
+                                        "input_number.config_soil_moisture_check_on_interval"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "config": {
+                        "alias": "Turn ON irrigation",
+                        "trigger": [
+                            {
+                                "platform": "time_pattern",
+                                "seconds": "/1"
+                            }
+                        ],
+                        "condition": [
+                            {
+                                "condition": "template",
+                                "value_template": "{{ now().second % states('input_number.config_soil_moisture_check_on_interval')|int == 0 }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ (now().strftime('%H:%M:%S') > states('input_datetime.config_soil_watering_time_start')) and (now().strftime('%H:%M:%S') < states('input_datetime.config_soil_watering_time_end')) }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ (states('sensor.soil_moisture_sensor') | int) < (states('input_number.config_soil_moisture_treshold') | int) }}\n"
+                            }
+                        ],
+                        "action": {
+                            "service": "mqtt.publish",
+                            "data": {
+                                "topic": "greenhouse/soil/devices/irrigation",
+                                "payload": "{{{'name': 'irrigation',  'state': 'ON'} | to_json}}"
+                            }
+                        }
+                    },
+                    "blueprint_inputs": null,
+                    "context": {
+                        "id": "01G6F4PYZ6XDHHK82TPXFQ2B4F",
+                        "parent_id": null,
+                        "user_id": null
+                    }
+                },
+                "short_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "57b808807f8b924a13b4f974e721a8de",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.006607+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern"
+                }
+            },
+            {
+                "extended_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "f8074e0935e3cb146c9d0156193bcb37",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.006895+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern",
+                    "trace": {
+                        "trigger/0": [
+                            {
+                                "path": "trigger/0",
+                                "timestamp": "2022-06-26T04:35:56.006924+00:00",
+                                "changed_variables": {
+                                    "this": {
+                                        "entity_id": "automation.turn_on_fans",
+                                        "state": "on",
+                                        "attributes": {
+                                            "last_triggered": "2022-06-21T11:10:30.022994+00:00",
+                                            "mode": "single",
+                                            "current": 0,
+                                            "friendly_name": "Turn ON fans"
+                                        },
+                                        "last_changed": "2022-06-26T02:51:04.351864+00:00",
+                                        "last_updated": "2022-06-26T02:51:04.351864+00:00",
+                                        "context": {
+                                            "id": "01G6EYPYRZ2SY6EMPBV66BTKT2",
+                                            "parent_id": null,
+                                            "user_id": null
+                                        }
+                                    },
+                                    "trigger": {
+                                        "id": "0",
+                                        "idx": "0",
+                                        "platform": "time_pattern",
+                                        "now": "2022-06-26T07:35:56.003120+03:00",
+                                        "description": "time pattern"
+                                    }
+                                }
+                            }
+                        ],
+                        "condition/0": [
+                            {
+                                "path": "condition/0",
+                                "timestamp": "2022-06-26T04:35:56.006949+00:00",
+                                "result": {
+                                    "result": false,
+                                    "entities": [
+                                        "input_number.config_air_fans_check_interval"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "config": {
+                        "alias": "Turn ON fans",
+                        "trigger": [
+                            {
+                                "platform": "time_pattern",
+                                "seconds": "/1"
+                            }
+                        ],
+                        "condition": [
+                            {
+                                "condition": "template",
+                                "value_template": "{{ now().second % states('input_number.config_air_fans_check_interval')|int == 0 }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ is_state('sensor.emergency_sensor', 'Off') }}\n"
+                            },
+                            {
+                                "condition": "template",
+                                "value_template": "{{ (states('sensor.collective_air_temperature_sensor') | int) > (states('input_number.config_air_fans_off_temp_treshold') | int) }}\n"
+                            },
+                            {
+                                "condition": "or",
+                                "conditions": [
+                                    {
+                                        "condition": "template",
+                                        "value_template": "{{ (states('sensor.air_moisture_sensor') | int) > (states('input_number.config_air_fans_on_moisture_treshold') | int) }}\n"
+                                    },
+                                    {
+                                        "condition": "template",
+                                        "value_template": "{{ (states('sensor.collective_air_temperature_sensor') | int) > (states('input_number.config_air_fans_on_temp_treshold') | int) }}\n"
+                                    }
+                                ]
+                            }
+                        ],
+                        "action": {
+                            "service": "mqtt.publish",
+                            "data": {
+                                "topic": "greenhouse/air/devices/fans",
+                                "payload": "{{{'name': 'fans',  'state': 'ON'} | to_json}}"
+                            }
+                        }
+                    },
+                    "blueprint_inputs": null,
+                    "context": {
+                        "id": "01G6F4PYZ6HPVG1V9QE8YX0DES",
+                        "parent_id": null,
+                        "user_id": null
+                    }
+                },
+                "short_dict": {
+                    "last_step": "condition/0",
+                    "run_id": "f8074e0935e3cb146c9d0156193bcb37",
+                    "state": "running",
+                    "script_execution": null,
+                    "timestamp": {
+                        "start": "2022-06-26T04:35:56.006895+00:00",
+                        "finish": null
+                    },
+                    "domain": "automation",
+                    "item_id": "None",
+                    "trigger": "time pattern"
+                }
+            }
+        ]
+    }
+}

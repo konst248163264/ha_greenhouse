@@ -1,0 +1,12 @@
+  - alias: Purge Database
+    initial_state: True
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      service: recorder.purge
+      data:
+        keep_days: 3
+        repack: true
+
+

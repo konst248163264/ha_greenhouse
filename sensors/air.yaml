@@ -1,0 +1,74 @@
+# Temperature
+
+  - platform: mqtt
+    name: "First air temperature sensor"
+    state_topic: "greenhouse/air/sensors/temperature/first"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: 'C°'
+    icon: mdi:numeric-1-box-outline
+
+  - platform: mqtt
+    name: "Second air temperature sensor"
+    state_topic: "greenhouse/air/sensors/temperature/second"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: 'C°'
+    icon: mdi:numeric-2-box-outline
+
+  - platform: mqtt
+    name: "Third air temperature sensor"
+    state_topic: "greenhouse/air/sensors/temperature/third"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: 'C°'
+    icon: mdi:numeric-3-box-outline
+
+
+
+  - platform: template
+    sensors:
+      collective_air_temperature_sensor:
+        friendly_name: "Collective air temperature sensor"
+        value_template: >-
+          {% if is_state('sensor.emergency_sensor', 'Off') %}
+            {{ (is_state('switch.t1_sensor_state', 'on') | int * states('sensor.first_air_temperature_sensor') | int + 
+                is_state('switch.t2_sensor_state', 'on') | int * states('sensor.second_air_temperature_sensor') | int + 
+                is_state('switch.t3_sensor_state', 'on') | int * states('sensor.third_air_temperature_sensor') | int) 
+                / states('sensor.emergency_sensor_count') | int }}
+          {% else %}
+            Unavailable
+          {% endif %}
+        unit_of_measurement: 'C°'
+        icon_template: mdi:thermometer
+
+# Moisture
+
+  - platform: mqtt
+    name: "Air moisture sensor"
+    state_topic: "greenhouse/air/sensors/moisture"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: '%'
+    icon: mdi:water-percent
+
+# Emergency
+
+  - platform: template
+    sensors:
+      emergency_sensor:
+        friendly_name: "Emergency mode"
+        value_template: >-
+          {% if is_state('switch.t1_sensor_state', 'off') and is_state('switch.t2_sensor_state', 'off') and is_state('switch.t3_sensor_state', 'off') %}
+            On
+          {% else %}
+            Off
+          {% endif %}
+        icon_template: mdi:alert
+      emergency_sensor_count:
+        value_template: "{{ is_state('switch.t1_sensor_state', 'on') | int + is_state('switch.t2_sensor_state', 'on') | int + is_state('switch.t3_sensor_state', 'on') | int }}"
+
+  - platform: template
+    sensors:
+      first_second:
+        value_template: "{{ (states('sensor.first_air_temperature_sensor') | int - states('sensor.second_air_temperature_sensor') | int) | abs <= states('input_number.config_allowable_air_temperature_delta') | int }}"
+      first_third:
+        value_template: "{{ (states('sensor.first_air_temperature_sensor') | int - states('sensor.third_air_temperature_sensor') | int) | abs <= states('input_number.config_allowable_air_temperature_delta') | int }}"
+      second_third:
+        value_template: "{{ (states('sensor.third_air_temperature_sensor') | int - states('sensor.second_air_temperature_sensor') | int) | abs <= states('input_number.config_allowable_air_temperature_delta') | int }}"

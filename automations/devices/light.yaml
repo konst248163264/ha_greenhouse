@@ -1,0 +1,45 @@
+# Lamps control
+
+  - alias: "Turn ON lamps"
+    trigger:
+      - platform: time_pattern
+        seconds: "/1"
+    condition:
+      - condition: template
+        value_template: >
+          {{ now().second % states('input_number.config_light_illumination_check_interval')|int == 0 }}
+      - condition: template
+        value_template: > 
+          {{ (now().strftime('%H:%M:%S') > states('input_datetime.config_light_daylight_start')) and (now().strftime('%H:%M:%S') < states('input_datetime.config_light_daylight_end')) }}
+      - condition: template
+        value_template: >
+          {{ (states('sensor.illumination_sensor') | int) < (states('input_number.config_light_illumination_on_treshold') | int) }}
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/light/devices/lamps"
+        payload: "{{{'name': 'lamps',  'state': 'ON'} | to_json}}"
+
+  - alias: "Turn OFF lamps"
+    trigger:
+      - platform: time_pattern
+        seconds: "/1"
+    condition:
+      condition: and
+      conditions:
+          - condition: template
+            value_template: >
+              {{ now().second % states('input_number.config_light_illumination_check_interval')|int == 0 }}
+          - condition: or
+            conditions:
+              - condition: template
+                value_template: > 
+                  {{ (now().strftime('%H:%M:%S') < states('input_datetime.config_light_daylight_start')) or (now().strftime('%H:%M:%S') > states('input_datetime.config_light_daylight_end')) }}
+              - condition: template
+                value_template: >
+                  {{ (states('sensor.illumination_sensor') | int) > (states('input_number.config_light_illumination_off_treshold') | int) }}
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/light/devices/lamps"
+        payload: "{{{'name': 'lamps',  'state': 'OFF'} | to_json}}"

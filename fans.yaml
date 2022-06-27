@@ -1,0 +1,34 @@
+- platform: template
+  fans:
+    bedroom_fan:
+      friendly_name: "Bedroom fan"
+      value_template: "{{ states('input_boolean.state') }}"
+      percentage_template: "{{ states('input_number.percentage') }}"
+      preset_mode_template: "{{ states('input_select.preset_mode') }}"
+      oscillating_template: "{{ states('input_select.osc') }}"
+      direction_template: "{{ states('input_select.direction') }}"
+      turn_on:
+        service: script.fan_on
+      turn_off:
+        service: script.fan_off
+      set_percentage:
+        service: script.fans_set_speed
+        data:
+          percentage: "{{ percentage }}"
+      set_preset_mode:
+        service: script.fans_set_preset_mode
+        data:
+          preset_mode: "{{ preset_mode }}"
+      set_oscillating:
+        service: script.fan_oscillating
+        data:
+          oscillating: "{{ oscillating }}"
+      set_direction:
+        service: script.fan_direction
+        data:
+          direction: "{{ direction }}"
+      speed_count: 6
+      preset_modes:
+        - 'auto'
+        - 'smart'
+        - 'whoosh'

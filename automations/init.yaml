@@ -1,0 +1,114 @@
+########################
+######## Soil ##########
+########################
+
+  - alias: "Init soil sensors"
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/soil/sensors/moisture"
+          payload: "{{{'name': 'soil moisture sensor',  'state': 75} | to_json}}"
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/soil/sensors/temperature"
+          payload: "{{{'name': 'soil temperature sensor',  'state': 17} | to_json}}"
+
+
+  - alias: "Init soil devices"
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/soil/devices/irrigation"
+          payload: "{{{'name': 'irrigation',  'state': 'OFF'} | to_json}}"
+
+
+#######################
+######## Air ##########
+#######################
+
+  - alias: "Init air sensors"
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/sensors/moisture"
+          payload: "{{{'name': 'air moisture sensor',  'state': 60} | to_json}}"
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/sensors/temperature/first"
+          payload: "{{{'name': '1 air temperature sensor',  'state': 17} | to_json}}"
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/sensors/temperature/second"
+          payload: "{{{'name': '2 air temperature sensor',  'state': 17} | to_json}}"
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/sensors/temperature/third"
+          payload: "{{{'name': '3 air temperature sensor',  'state': 17} | to_json}}"
+
+
+  - alias: "Init air devices"
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/devices/radiators"
+          payload: "{{{'name': 'radiators',  'state': 'OFF'} | to_json}}"
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/devices/fans"
+          payload: "{{{'name': 'fans',  'state': 'OFF'} | to_json}}"
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/devices/covers"
+          payload: "{{{'name': 'covers',  'state': 'OFF'} | to_json}}"
+
+########################
+######## Light #########
+########################
+
+  - alias: "Init light sensors"
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/light/sensors/illumination"
+          payload: "{{{'name': 'illumination sensor',  'state': 40000} | to_json}}"
+
+
+  - alias: "Init light devices"
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/light/devices/lamps"
+          payload: "{{{'name': 'lamps',  'state': 'OFF'} | to_json}}"
+
+
+########################
+######## Test ##########
+########################
+
+  - alias: "Init test topics"
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/test"
+          payload: "OFF"

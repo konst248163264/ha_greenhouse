@@ -1,0 +1,115 @@
+#test_first_air_temperature
+  - alias: "Set first air_temperature input_number"
+    trigger:
+      platform: mqtt
+      topic: "greenhouse/air/sensors/temperature/first"
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.test_first_air_temperature
+      data:
+        value: "{{ trigger.payload_json.state }}"
+
+  - alias: "first air_temperature input_number changed"
+    trigger:
+      platform: state
+      entity_id: input_number.test_first_air_temperature
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/air/sensors/temperature/first"
+        retain: true
+        payload: "{\"name\": \"1 air temperature sensor\",  \"state\": {{states('input_number.test_first_air_temperature') | int}}}"
+
+#test_second_air_temperature
+  - alias: "Set second air_temperature input_number"
+    trigger:
+      platform: mqtt
+      topic: "greenhouse/air/sensors/temperature/second"
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.test_second_air_temperature
+      data:
+        value: "{{ trigger.payload_json.state }}"
+
+  - alias: "Second air_temperature input_number changed"
+    trigger:
+      platform: state
+      entity_id: input_number.test_second_air_temperature
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/air/sensors/temperature/second"
+        retain: true
+        payload: "{\"name\": \"2 air temperature sensor\",  \"state\": {{states('input_number.test_second_air_temperature') | int}}}"
+
+#test_second_air_temperature
+  - alias: "Set third air_temperature input_number"
+    trigger:
+      platform: mqtt
+      topic: "greenhouse/air/sensors/temperature/third"
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.test_third_air_temperature
+      data:
+        value: "{{ trigger.payload_json.state }}"
+
+  - alias: "Third air_temperature input_number changed"
+    trigger:
+      platform: state
+      entity_id: input_number.test_third_air_temperature
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/air/sensors/temperature/third"
+        retain: true
+        payload: "{\"name\": \"3 air temperature sensor\",  \"state\": {{states('input_number.test_third_air_temperature') | int}}}"
+
+
+#test_air_co2
+  - alias: "Set air_co2 input_number"
+    trigger:
+      platform: mqtt
+      topic: "greenhouse/air/sensors/co2"
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.test_air_co2
+      data:
+        value: "{{ trigger.payload_json.state }}"
+
+  - alias: "air_co2 input_number changed"
+    trigger:
+      platform: state
+      entity_id: input_number.test_air_co2
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/air/sensors/co2"
+        retain: true
+        payload: "{{ states('input_number.test_air_co2') | int }}"
+
+#test_air_moisture
+  - alias: "Set air_moisture input_number"
+    trigger:
+      platform: mqtt
+      topic: "greenhouse/air/sensors/moisture"
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.test_air_moisture
+      data:
+        value: "{{ trigger.payload_json.state }}"
+
+  - alias: "air_moisture input_number changed"
+    trigger:
+      platform: state
+      entity_id: input_number.test_air_moisture
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/air/sensors/moisture"
+        retain: true
+        payload: "{\"name\": \"air moisture sensor\",  \"state\": {{states('input_number.test_air_moisture') | int}}}"

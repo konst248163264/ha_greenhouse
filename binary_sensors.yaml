@@ -1,0 +1,96 @@
+########################
+######## Soil ##########
+########################
+
+  - platform: mqtt
+    name: "Irrigation b_1"
+    state_topic: "greenhouse/soil/devices/irrigation"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+  - platform: mqtt
+    name: "Irrigation b_2"
+    state_topic: "greenhouse/soil/devices/irrigation"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+  - platform: mqtt
+    name: "Irrigation b_3"
+    state_topic: "greenhouse/soil/devices/irrigation"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+  - platform: mqtt
+    name: "Irrigation b_4"
+    state_topic: "greenhouse/soil/devices/irrigation"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+  - platform: mqtt
+    name: "Irrigation b_5"
+    state_topic: "greenhouse/soil/devices/irrigation"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+  - platform: mqtt
+    name: "Irrigation b_6"
+    state_topic: "greenhouse/soil/devices/irrigation"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+
+#######################
+######## Air ##########
+#######################
+
+  - platform: mqtt
+    name: "Radiators"
+    state_topic: "greenhouse/air/devices/radiators"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+
+  - platform: mqtt
+    name: "Fans"
+    state_topic: "greenhouse/air/devices/fans"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+
+  - platform: mqtt
+    name: "Covers"
+    state_topic: "greenhouse/air/devices/covers"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+
+
+########################
+######## Light #########
+########################
+
+  - platform: mqtt
+    name: "Lamps"
+    state_topic: "greenhouse/light/devices/lamps"
+    value_template: "{{ value_json.state }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: power
+

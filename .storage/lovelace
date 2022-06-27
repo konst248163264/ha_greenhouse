@@ -1,0 +1,296 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "lovelace",
+    "data": {
+        "config": {
+            "title": "Green house",
+            "views": [
+                {
+                    "title": "Main page",
+                    "path": "new-greenhouse",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_number.test_soil_moisture"
+                                },
+                                {
+                                    "entity": "input_number.test_soil_temperature"
+                                }
+                            ],
+                            "title": "Soil input_numbers"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_number.test_first_air_temperature"
+                                },
+                                {
+                                    "entity": "input_number.test_second_air_temperature"
+                                },
+                                {
+                                    "entity": "input_number.test_third_air_temperature"
+                                },
+                                {
+                                    "entity": "input_number.test_air_moisture"
+                                }
+                            ],
+                            "title": "Air input_numbers"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.soil_moisture_sensor"
+                                },
+                                {
+                                    "entity": "sensor.soil_temperature_sensor"
+                                }
+                            ],
+                            "title": "Soil sensors"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.first_air_temperature_sensor"
+                                },
+                                {
+                                    "entity": "sensor.second_air_temperature_sensor"
+                                },
+                                {
+                                    "entity": "sensor.third_air_temperature_sensor"
+                                },
+                                {
+                                    "entity": "sensor.collective_air_temperature_sensor"
+                                },
+                                {
+                                    "entity": "sensor.air_moisture_sensor"
+                                }
+                            ],
+                            "title": "Air sensors"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.irrigation"
+                                }
+                            ],
+                            "title": "Soil devices"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.radiators"
+                                },
+                                {
+                                    "entity": "binary_sensor.fans"
+                                },
+                                {
+                                    "entity": "binary_sensor.covers"
+                                }
+                            ],
+                            "title": "Air devices"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.lamps"
+                                }
+                            ],
+                            "title": "Light devices"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_number.test_light_illumination"
+                                }
+                            ],
+                            "title": "Light input_numbers"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.illumination_sensor"
+                                }
+                            ],
+                            "title": "Light sensors"
+                        }
+                    ]
+                },
+                {
+                    "title": "Config",
+                    "path": "new-page",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_number.config_soil_moisture_treshold"
+                                },
+                                {
+                                    "entity": "input_datetime.config_soil_watering_time_start"
+                                },
+                                {
+                                    "entity": "input_datetime.config_soil_watering_time_end"
+                                },
+                                {
+                                    "entity": "input_number.config_soil_moisture_check_on_interval"
+                                },
+                                {
+                                    "entity": "input_number.config_soil_moisture_check_off_interval"
+                                }
+                            ],
+                            "title": "Soil"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_number.config_air_radiators_on_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_radiators_off_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_radiators_check_interval"
+                                },
+                                {
+                                    "entity": "input_number.config_air_fans_on_temp_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_fans_on_moisture_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_fans_off_temp_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_fans_off_moisture_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_fans_check_interval"
+                                },
+                                {
+                                    "entity": "input_number.config_air_covers_on_temp_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_covers_on_moisture_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_covers_off_temp_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_covers_off_moisture_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_air_covers_check_interval"
+                                }
+                            ],
+                            "title": "Air"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_number.config_light_illumination_on_treshold"
+                                },
+                                {
+                                    "entity": "input_number.config_light_illumination_off_treshold"
+                                },
+                                {
+                                    "entity": "input_datetime.config_light_daylight_start"
+                                },
+                                {
+                                    "entity": "input_datetime.config_light_daylight_end"
+                                },
+                                {
+                                    "entity": "input_number.config_light_illumination_check_interval"
+                                }
+                            ],
+                            "title": "Light"
+                        }
+                    ]
+                },
+                {
+                    "title": "x",
+                    "path": "x",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "markdown",
+                            "content": "The **Markdown** card allows you to write any text. You can style it **bold**, *italicized*, ~strikethrough~ etc. You can do images, links, and more.\n\nFor more information see the [Markdown Cheatsheet](https://commonmark.org/help)."
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "switch.t1_sensor_state"
+                                },
+                                {
+                                    "entity": "switch.t2_sensor_state"
+                                },
+                                {
+                                    "entity": "switch.t3_sensor_state"
+                                },
+                                {
+                                    "entity": "sensor.emergency_sensor"
+                                },
+                                {
+                                    "entity": "input_number.config_allowable_air_temperature_delta"
+                                },
+                                {
+                                    "entity": "input_number.config_air_temperature_delta_check_interval"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_datetime.config_air_emergency_covers_start"
+                                },
+                                {
+                                    "entity": "input_datetime.config_air_emergency_covers_end"
+                                },
+                                {
+                                    "entity": "input_number.config_air_emergency_fans_every"
+                                },
+                                {
+                                    "entity": "input_number.config_air_emergency_fans_for"
+                                },
+                                {
+                                    "entity": "input_datetime.config_air_emergency_fans_start"
+                                },
+                                {
+                                    "entity": "input_datetime.config_air_emergency_fans_end"
+                                },
+                                {
+                                    "entity": "input_number.config_air_emergency_radiators_every"
+                                },
+                                {
+                                    "entity": "input_number.config_air_emergency_radiators_for"
+                                },
+                                {
+                                    "entity": "input_datetime.config_air_emergency_radiators_start"
+                                },
+                                {
+                                    "entity": "input_datetime.config_air_emergency_radiators_end"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

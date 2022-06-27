@@ -1,0 +1,48 @@
+  - platform: mqtt
+    name: "Soil temperature sensor"
+    state_topic: "greenhouse/soil/sensors/temperature"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: 'C°'
+    icon: mdi:thermometer
+
+  - platform: mqtt
+    name: "Moisture sensor b_1"
+    state_topic: "greenhouse/soil/sensors/moisture"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: '%'
+    icon: mdi:water-percent
+
+  - platform: mqtt
+    name: "Moisture sensor b_2"
+    state_topic: "greenhouse/soil/sensors/moisture"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: '%'
+    icon: mdi:water-percent
+
+  - platform: mqtt
+    name: "Moisture sensor b_3"
+    state_topic: "greenhouse/soil/sensors/moisture"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: '%'
+    icon: mdi:water-percent
+
+  - platform: mqtt
+    name: "Moisture sensor b_4"
+    state_topic: "greenhouse/soil/sensors/moisture"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: '%'
+    icon: mdi:water-percent
+
+  - platform: mqtt
+    name: "Moisture sensor b_5"
+    state_topic: "greenhouse/soil/sensors/moisture"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: '%'
+    icon: mdi:water-percent
+
+  - platform: mqtt
+    name: "Moisture sensor b_6"
+    state_topic: "greenhouse/soil/sensors/moisture"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: '%'
+    icon: mdi:water-percent

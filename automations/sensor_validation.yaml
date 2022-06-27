@@ -1,0 +1,81 @@
+# Emergency mode control
+#  - alias: "Turn ON emergency"
+#    trigger:
+#      - platform: time_pattern
+#        seconds: "/1"
+#    condition:
+#      - condition: template
+#        value_template: >
+#          {{ now().second % states('input_number.config_air_temperature_delta_check_interval')|int == 0 }}
+#      - condition: template
+#        value_template: >
+#          {{ is_state('sensor.emergency_sensor', 'Off') }}
+#      - condition: template
+#        value_template: >
+#          {{ (is_state('sensor.first_second', 'True') or is_state('sensor.first_third', 'True') or is_state('sensor.second_third', 'True')) == false }}
+#    action:
+#      service: switch.turn_off
+#      entity_id:
+#        - switch.t1_sensor_state
+#        - switch.t2_sensor_state
+#        - switch.t3_sensor_state
+
+# First sensor control
+  - alias: "Turn OFF first temp sensor"
+    trigger:
+      - platform: time_pattern
+        seconds: "/1"
+    condition:
+      - condition: template
+        value_template: >
+          {{ now().second % states('input_number.config_air_temperature_delta_check_interval')|int == 0 }}
+      - condition: template
+        value_template: >
+          {{ is_state('switch.t1_sensor_state', 'on') }}
+      - condition: template
+        value_template: >
+          {{ (is_state('sensor.first_second', 'False') and is_state('sensor.first_third', 'False')) == true }}
+    action:
+      service: switch.turn_off
+      entity_id:
+        - switch.t1_sensor_state
+
+# Second sensor control
+  - alias: "Turn OFF second temp sensor"
+    trigger:
+      - platform: time_pattern
+        seconds: "/1"
+    condition:
+      - condition: template
+        value_template: >
+          {{ now().second % states('input_number.config_air_temperature_delta_check_interval')|int == 0 }}
+      - condition: template
+        value_template: >
+          {{ is_state('switch.t2_sensor_state', 'on') }}
+      - condition: template
+        value_template: >
+          {{ (is_state('sensor.first_second', 'False') and is_state('sensor.second_third', 'False')) == true }}
+    action:
+      service: switch.turn_off
+      entity_id:
+        - switch.t2_sensor_state
+
+# Third sensor control
+  - alias: "Turn OFF third temp sensor"
+    trigger:
+      - platform: time_pattern
+        seconds: "/1"
+    condition:
+      - condition: template
+        value_template: >
+          {{ now().second % states('input_number.config_air_temperature_delta_check_interval')|int == 0 }}
+      - condition: template
+        value_template: >
+          {{ is_state('switch.t3_sensor_state', 'on') }}
+      - condition: template
+        value_template: >
+          {{ (is_state('sensor.second_third', 'False') and is_state('sensor.first_third', 'False')) == true }}
+    action:
+      service: switch.turn_off
+      entity_id:
+        - switch.t3_sensor_state

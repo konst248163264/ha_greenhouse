@@ -1,0 +1,144 @@
+########################
+######## Soil ##########
+########################
+
+  - platform: mqtt
+    name: "Irrigation switch"
+    state_topic: "greenhouse/soil/devices/irrigation"
+    command_topic: "greenhouse/soil/devices/irrigation"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: template
+    switches:
+# First bed toogle
+      bed_1:
+        friendly_name: "Enable bed_1"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_1
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_1
+# Second bed toogle
+      bed_2:
+        friendly_name: "Enable bed_2"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_2
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_2
+# Third bed toogle
+      bed_3:
+        friendly_name: "Enable bed_3"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_3
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_3
+# Fourth bed toogle
+      bed_4:
+        friendly_name: "Enable bed_4"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_4
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_4
+# Fifth bed toogle
+      bed_5:
+        friendly_name: "Enable bed_5"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_5
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_5
+# Sixth bed toogle
+      bed_6:
+        friendly_name: "Enable bed_6"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_6
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.bed_6
+
+
+#######################
+######## Air ##########
+#######################
+
+  - platform: template
+    switches:
+# First sensor toogle
+      t1_sensor_state:
+        friendly_name: "First air temperature sensor"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.t1_sensor_state
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.t1_sensor_state
+            
+# Second sensor toogle
+      t2_sensor_state:
+        friendly_name: "Second air temperature sensor"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.t2_sensor_state
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.t2_sensor_state
+
+# Third sensor toogle
+      t3_sensor_state:
+        friendly_name: "Third air temperature sensor"
+        turn_on:
+          service: switch.toggle
+          target:
+            entity_id: switch.t3_sensor_state
+        turn_off:
+          service: switch.toggle
+          target:
+            entity_id: switch.t3_sensor_state
+
+########################
+######## Test ##########
+########################
+
+  - platform: template
+    switches:
+        test_mode:
+          friendly_name: "Enable test mode"
+          turn_on:
+            service: switch.toggle
+            target:
+              entity_id: switch.test_mode
+          turn_off:
+            service: switch.toggle
+            target:
+              entity_id: switch.test_mode

@@ -1,0 +1,46 @@
+# Irrigation control
+
+  - alias: "Turn ON irrigation"
+    trigger:
+      - platform: time_pattern
+        seconds: "/1"
+    condition:
+      - condition: template
+        value_template: >
+          {{ now().second % states('input_number.config_soil_moisture_check_on_interval')|int == 0 }}
+      - condition: template
+        value_template: >
+          {{ (now().strftime('%H:%M:%S') > states('input_datetime.config_soil_watering_time_start')) and (now().strftime('%H:%M:%S') < states('input_datetime.config_soil_watering_time_end')) }}
+      - condition: template
+        value_template: >
+          {{ (states('sensor.soil_moisture_sensor') | int) < (states('input_number.config_soil_moisture_treshold') | int) }}
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/soil/devices/irrigation"
+        payload: "{{{'name': 'irrigation',  'state': 'ON'} | to_json}}"
+
+
+  - alias: "Turn OFF irrigation"
+    trigger:
+      - platform: time_pattern
+        seconds: "/1"
+    condition:
+      condition: and
+      conditions:
+          - condition: template
+            value_template: >
+              {{ now().second % states('input_number.config_soil_moisture_check_off_interval') | int == 0 }}
+          - condition: or
+            conditions:
+              - condition: template
+                value_template: > 
+                  {{ (now().strftime('%H:%M:%S') < states('input_datetime.config_soil_watering_time_start')) or (now().strftime('%H:%M:%S') > states('input_datetime.config_soil_watering_time_end')) }}
+              - condition: template
+                value_template: >
+                  {{ (states('sensor.soil_moisture_sensor') | int) > (states('input_number.config_soil_moisture_treshold') | int) }}
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/soil/devices/irrigation"
+        payload: "{{{'name': 'irrigation',  'state': 'OFF'} | to_json}}"

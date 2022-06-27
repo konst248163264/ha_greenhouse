@@ -1,0 +1,74 @@
+########################
+######## Soil ##########
+########################
+
+config_soil_watering_time_start:
+  name: Watering time start
+  has_date: false
+  has_time: true
+  icon: mdi:clock-start
+
+config_soil_watering_time_end:
+  name: Watering time end
+  has_date: false
+  has_time: true
+  icon: mdi:clock-end
+
+#######################
+######## Air ##########
+#######################
+
+# Emergency radiators
+config_air_emergency_radiators_start:
+  name: Radiators' emergency mode start
+  has_date: false
+  has_time: true
+  icon: mdi:clock-start
+
+config_air_emergency_radiators_end:
+  name: Radiators' emergency mode end
+  has_date: false
+  has_time: true
+  icon: mdi:clock-end
+
+# Emergency covers
+config_air_emergency_covers_start:
+  name: Covers' emergency mode start
+  has_date: false
+  has_time: true
+  icon: mdi:clock-start
+
+config_air_emergency_covers_end:
+  name: Covers' emergency mode end
+  has_date: false
+  has_time: true
+  icon: mdi:clock-end
+
+# Emergency fans
+config_air_emergency_fans_start:
+  name: Fans' emergency mode start
+  has_date: false
+  has_time: true
+  icon: mdi:clock-start
+
+config_air_emergency_fans_end:
+  name: Fans' emergency mode end
+  has_date: false
+  has_time: true
+  icon: mdi:clock-end
+
+########################
+######## Light #########
+########################
+
+config_light_daylight_start:
+  name: Daylight start
+  has_date: false
+  has_time: true
+  icon: mdi:clock-start
+
+config_light_daylight_end:
+  name: Daylight end
+  has_date: false
+  has_time: true
+  icon: mdi:clock-end

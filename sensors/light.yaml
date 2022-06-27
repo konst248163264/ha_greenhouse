@@ -1,0 +1,6 @@
+  - platform: mqtt
+    name: "Illumination sensor"
+    state_topic: "greenhouse/light/sensors/illumination"
+    value_template: "{{ value_json.state }}"
+    unit_of_measurement: 'lux'
+    icon: mdi:brightness-5

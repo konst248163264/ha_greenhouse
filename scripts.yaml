@@ -1,0 +1,50 @@
+emergency_mode_radiators:
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/devices/radiators"
+          payload: "{{{'name': 'radiators',  'state': 'OFF'} | to_json}}"
+      - alias: "Radiators OnOff cycle"
+        repeat:
+          while:
+            - condition: state
+              entity_id: sensor.emergency_sensor
+              state: "On"
+          sequence:
+            - delay: "{{ states('input_number.config_air_emergency_radiators_every') }}"
+            - wait_template: "{{ (now().strftime('%H:%M:%S') > states('input_datetime.config_air_emergency_radiators_start')) and (now().strftime('%H:%M:%S') < states('input_datetime.config_air_emergency_radiators_end')) }}"
+            - service: mqtt.publish
+              data:
+                topic: "greenhouse/air/devices/radiators"
+                payload: "{{{'name': 'radiators',  'state': 'ON'} | to_json}}"
+            - delay: "{{ states('input_number.config_air_emergency_radiators_for') }}"
+            - service: mqtt.publish
+              data:
+                topic: "greenhouse/air/devices/radiators"
+                payload: "{{{'name': 'radiators',  'state': 'OFF'} | to_json}}"
+
+emergency_mode_fans:
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "greenhouse/air/devices/fans"
+          payload: "{{{'name': 'fans',  'state': 'OFF'} | to_json}}"
+      - alias: "Fans OnOff cycle"
+        repeat:
+          while:
+            - condition: state
+              entity_id: sensor.emergency_sensor
+              state: "On"
+          sequence:
+            - delay: "{{ states('input_number.config_air_emergency_fans_every') }}"
+            - wait_template: "{{ (now().strftime('%H:%M:%S') > states('input_datetime.config_air_emergency_fans_start')) and (now().strftime('%H:%M:%S') < states('input_datetime.config_air_emergency_fans_end')) }}"
+            - service: mqtt.publish
+              data:
+                topic: "greenhouse/air/devices/fans"
+                payload: "{{{'name': 'fans',  'state': 'ON'} | to_json}}"
+            - delay: "{{ states('input_number.config_air_emergency_fans_for') }}"
+            - service: mqtt.publish
+              data:
+                topic: "greenhouse/air/devices/fans"
+                payload: "{{{'name': 'fans',  'state': 'OFF'} | to_json}}"
+

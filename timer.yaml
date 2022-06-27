@@ -1,0 +1,8 @@
+fan_wait:
+  duration: "{{ states('input_number.config_air_emergency_fans_every') }}"
+
+fan_work:
+
+radiator_wait:
+
+radiator_work:

@@ -1,0 +1,350 @@
+########################
+######## Soil ##########
+########################
+
+# Test
+
+test_soil_moisture:
+    name: Soil moisture 1
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+test_soil_moisture_2:
+    name: Soil moisture 2
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+test_soil_moisture_3:
+    name: Soil moisture 3
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+test_soil_moisture_4:
+    name: Soil moisture 4
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+test_soil_moisture_5:
+    name: Soil moisture 5
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+test_soil_moisture_6:
+    name: Soil moisture 6
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+
+test_soil_temperature:
+    name: Soil temperature
+    min: -10
+    max: 40
+    step: 1
+    icon: mdi:thermometer
+
+# Config irrigation
+
+config_soil_moisture_check_on_interval:
+    name: Moisture check ON interval
+    mode: box
+    min: 1
+    max: 86400
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog-outline
+
+config_soil_moisture_check_off_interval:
+    name: Moisture check OFF interval
+    mode: box
+    min: 1
+    max: 86400
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog-outline
+
+config_soil_moisture_treshold:
+    name: Soil moisture treshold
+    mode: box
+    min: 0
+    max: 100
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+#######################
+######## Air ##########
+#######################
+
+# Test
+
+test_first_air_temperature:
+    name: First air temperature
+    min: 5
+    max: 40
+    step: 1
+    icon: mdi:numeric-1-box-outline
+    unit_of_measurement: "C°"
+
+test_second_air_temperature:
+    name: Second air temperature
+    min: 5
+    max: 40
+    step: 1
+    icon: mdi:numeric-2-box-outline
+    unit_of_measurement: "C°"
+
+test_third_air_temperature:
+    name: Third air temperature
+    min: 5
+    max: 40
+    step: 1
+    icon: mdi:numeric-3-box-outline
+    unit_of_measurement: "C°"
+
+test_air_co2:
+    name: CO2 level
+    min: 0
+    max: 3000
+    step: 1
+    icon: mdi:molecule-co2
+
+test_air_moisture:
+    name: Air moisture
+    min: 0
+    max: 100
+    step: 1
+    icon: mdi:water-percent
+    unit_of_measurement: "%"
+
+# Config valid temperature sensor
+
+config_allowable_air_temperature_delta:
+    name: Allowable air temperature delta
+    mode: box
+    min: 0
+    max: 35
+    step: 1
+    unit_of_measurement: "C°"
+    icon: mdi:delta
+
+config_air_temperature_delta_check_interval:
+    name: Air temperature delta check interval
+    mode: box
+    min: 1
+    max: 300
+    step: 1
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog-outline
+
+# Config radiators
+
+config_air_radiators_on_treshold:
+    name: Radiators ON treshold
+    mode: box
+    min: 0
+    max: 50
+    step: 1
+    unit_of_measurement: "C°"
+    icon: mdi:thermometer-low
+
+config_air_radiators_off_treshold:
+    name: Radiators OFF treshold
+    mode: box
+    min: 0
+    max: 50
+    step: 1
+    unit_of_measurement: "C°"
+    icon: mdi:thermometer-high
+
+config_air_radiators_check_interval:
+    name: Radiators check interval
+    mode: box
+    min: 1
+    max: 86400
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog-outline
+
+# Config fans
+
+config_air_fans_check_interval:
+    name: Fans check interval
+    mode: box
+    min: 1
+    max: 86400
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog-outline
+
+config_air_fans_on_temp_treshold:
+    name: Fans ON temperature treshold
+    mode: box
+    min: 0
+    max: 60
+    step: 1
+    unit_of_measurement: "C°"
+    icon: mdi:thermometer-high
+
+config_air_fans_on_moisture_treshold:
+    name: Fans ON moisture treshold
+    mode: box
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water
+
+config_air_fans_off_temp_treshold:
+    name: Fans OFF temperature treshold
+    mode: box
+    min: 0
+    max: 60
+    step: 1
+    unit_of_measurement: "C°"
+    icon: mdi:thermometer-low
+
+config_air_fans_off_moisture_treshold:
+    name: Fans OFF moisture treshold
+    mode: box
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water-off
+
+# Config covers
+
+config_air_covers_check_interval:
+    name: Covers check interval
+    mode: box
+    min: 1
+    max: 86400
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog-outline
+
+config_air_covers_on_temp_treshold:
+    name: Covers ON temperature treshold
+    mode: box
+    min: 0
+    max: 60
+    step: 1
+    unit_of_measurement: "C°"
+    icon: mdi:thermometer-high
+
+config_air_covers_on_moisture_treshold:
+    name: Covers ON moisture treshold
+    mode: box
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water
+
+config_air_covers_off_temp_treshold:
+    name: Covers OFF temperature treshold
+    mode: box
+    min: 0
+    max: 60
+    step: 1
+    unit_of_measurement: "C°"
+    icon: mdi:thermometer-low
+
+config_air_covers_off_moisture_treshold:
+    name: Covers OFF moisture treshold
+    mode: box
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    icon: mdi:water-off
+
+# Config Emergency mode
+
+config_air_emergency_fans_every:
+    name: Turn ON fans every
+    mode: box
+    min: 1
+    max: 8640
+    step: 1
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog
+
+config_air_emergency_fans_for:
+    name: Turn ON fans for
+    mode: box
+    min: 0
+    max: 8640
+    step: 1
+    unit_of_measurement: "sec"
+    icon: mdi:av-timer
+
+config_air_emergency_radiators_every:
+    name: Turn ON radiators every
+    mode: box
+    min: 1
+    max: 8640
+    step: 1
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog
+
+config_air_emergency_radiators_for:
+    name: Turn ON radiators for
+    mode: box
+    min: 0
+    max: 8640
+    step: 1
+    unit_of_measurement: "sec"
+    icon: mdi:av-timer
+
+########################
+######## Light #########
+########################
+
+# Test
+
+test_light_illumination:
+    name: Illumination
+    min: 0
+    max: 120000
+    step: 1
+    icon: mdi:brightness-5
+    unit_of_measurement: "lux"
+
+# Config lamps
+
+config_light_illumination_check_interval:
+    name: Illumination check interval, seconds
+    mode: box
+    min: 1
+    max: 86400
+    unit_of_measurement: "sec"
+    icon: mdi:timer-cog-outline
+
+config_light_illumination_on_treshold:
+    name: Illumination ON treshold
+    mode: box
+    min: 0
+    max: 120000
+    unit_of_measurement: "lux"
+    icon: mdi:brightness-5
+
+config_light_illumination_off_treshold:
+    name: Illumination OFF treshold
+    mode: box
+    min: 0
+    max: 120000
+    unit_of_measurement: "lux"
+    icon: mdi:brightness-7

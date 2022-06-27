@@ -1,0 +1,60 @@
+########################
+######## Soil ##########
+########################
+
+soil_moisture_check_interval:
+  friendly_name: "Soil moisture check interval"
+  value_template: "{{ states('input_number.config_soil_moisture_check_interval') | int }}"
+  tracked_entity_id:
+    - input_number.config_soil_moisture_check_interval
+
+soil_moisture_treshold:
+  friendly_name: "Soil moisture treshold"
+  value_template: "{{ states('input_number.config_soil_moisture_treshold') | int }}"
+  tracked_entity_id:
+    - input_number.config_soil_moisture_treshold
+
+soil_watering_time_start:
+  friendly_name: "Soil watering time start"
+  value_template: "{{ states('input_datetime.config_soil_watering_time_start') }}"
+  tracked_entity_id:
+    - input_datetime.config_soil_watering_time_start
+
+soil_watering_time_end:
+  friendly_name: "Soil watering time end"
+  value_template: "{{ states('input_datetime.config_soil_watering_time_end') }}"
+  tracked_entity_id:
+    - input_datetime.config_soil_watering_time_end
+
+#######################
+######## Air ##########
+#######################
+
+
+########################
+######## Light #########
+########################
+
+light_illumination_check_interval:
+  friendly_name: "Illumination check interval"
+  value_template: "{{ states('input_number.config_light_illumination_check_interval') | int }}"
+  tracked_entity_id:
+    - input_number.config_light_illumination_check_interval
+
+light_illumination_treshold:
+  friendly_name: "Illumination treshold"
+  value_template: "{{ states('input_number.config_light_illumination_treshold') | int }}"
+  tracked_entity_id:
+    - input_number.config_light_illumination_treshold
+
+light_daylight_start:
+  friendly_name: "Daylight start"
+  value_template: "{{ states('input_datetime.config_light_daylight_start') }}"
+  tracked_entity_id:
+    - input_datetime.config_light_daylight_start
+
+light_daylight_end:
+  friendly_name: "Daylight end"
+  value_template: "{{ states('input_datetime.config_light_daylight_end') }}"
+  tracked_entity_id:
+    - input_datetime.config_light_daylight_end

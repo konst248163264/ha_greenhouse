@@ -1,0 +1,45 @@
+#test_soil_moisture
+  - alias: "Set soil_moisture input_number"
+    trigger:
+      platform: mqtt
+      topic: "greenhouse/soil/sensors/moisture"
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.test_soil_moisture
+      data:
+        value: "{{ trigger.payload_json.state }}"
+
+  - alias: "soil_moisture input_number changed"
+    trigger:
+      platform: state
+      entity_id: input_number.test_soil_moisture
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/soil/sensors/moisture"
+        retain: true
+        payload: "{\"name\": \"soil moisture sensor\",  \"state\": {{states('input_number.test_soil_moisture') | int}}}"
+
+#test_soil_temperature
+  - alias: "Set soil_temperature input_number"
+    trigger:
+      platform: mqtt
+      topic: "greenhouse/soil/sensors/temperature"
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.test_soil_temperature
+      data:
+        value: "{{ trigger.payload_json.state }}"
+
+  - alias: "soil_temperature input_number changed"
+    trigger:
+      platform: state
+      entity_id: input_number.test_soil_temperature
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/soil/sensors/temperature"
+        retain: true
+        payload: "{\"name\": \"soil temperature sensor\",  \"state\": {{states('input_number.test_soil_temperature') | int}}}"

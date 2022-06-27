@@ -1,0 +1,25 @@
+db_url: mysql://homeassistant:protectmydata@core-mariadb/homeassistant?charset=utf8mb4
+
+include:
+  domains:
+    - sensor
+    - binary_sensor
+exclude:
+    entities:
+      - binary_sensor.updater
+      - sensor.hacs
+    event_types:
+      - service_removed
+      - service_executed
+      - platform_discovered
+      - homeassistant_start
+      - homeassistant_stop
+      - feedreader
+      - service_registered
+      - call_service
+      - component_loaded
+      - logbook_entry
+      - automation_triggered
+      - system_log_event
+      - script_started
+      - timer_out_of_sync

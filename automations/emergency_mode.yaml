@@ -1,0 +1,109 @@
+# Controller
+
+  - alias: "Emergency mode ON"
+    trigger:
+      - platform: time_pattern
+        seconds: "/5"
+    condition:
+      - condition: template
+        value_template: >
+          {{ is_state('sensor.emergency_sensor', 'On') }}
+    action:
+      service: script.turn_on
+      entity_id: 
+        - script.emergency_mode_radiators
+        - script.emergency_mode_fans
+
+  - alias: "Emergency mode OFF"
+    trigger:
+      - platform: time_pattern
+        seconds: "/5"
+    condition:
+      - condition: template
+        value_template: >
+          {{ is_state('sensor.emergency_sensor', 'Off') }}
+    action:
+      service: script.turn_off
+      entity_id:
+        - script.emergency_mode_radiators
+        - script.emergency_mode_fans
+
+
+# Radiators
+#  - alias: "Turn ON radiators"
+#    trigger:
+#      - platform: time_pattern
+#        seconds: "/1"
+#    condition:
+#      - condition: template
+#        value_template: >
+#          {{ now().second % states('input_number.config_air_radiators_check_interval')|int == 0 }}
+#      - condition: template
+#        value_template: >
+#          {{ is_state('sensor.emergency_sensor', 'Off') }}
+#      - condition: template
+#        value_template: >
+#          {{ (states('sensor.collective_air_temperature_sensor') | int) < (states('input_number.config_air_radiators_on_treshold') | int) }}
+#    action:
+#      service: mqtt.publish
+#      data:
+#        topic: "greenhouse/air/devices/radiators"
+#        payload: "{{{'name': 'radiators',  'state': 'ON'} | to_json}}"
+#
+#
+#  - alias: "Turn OFF radiators"
+#    trigger:
+#      - platform: time_pattern
+#        seconds: "/1"
+#    condition:
+#      - condition: template
+#        value_template: >
+#          {{ now().second % states('input_number.config_air_radiators_check_interval')|int == 0 }}
+#      - condition: template
+#        value_template: >
+#          {{ is_state('sensor.emergency_sensor', 'Off') }}
+#      - condition: template
+#        value_template: >
+#          {{ (states('sensor.collective_air_temperature_sensor') | int) > (states('input_number.config_air_radiators_off_treshold') | int) }}
+#    action:
+#      service: mqtt.publish
+#      data:
+#        topic: "greenhouse/air/devices/radiators"
+#        payload: "{{{'name': 'radiators',  'state': 'OFF'} | to_json}}"
+
+# Covers 
+
+  - alias: "Emergency covers ON"
+    trigger:
+      - platform: time_pattern
+        seconds: "/5"
+    condition:
+      - condition: template
+        value_template: >
+          {{ (now().strftime('%H:%M:%S') > states('input_datetime.config_air_emergency_covers_start')) and (now().strftime('%H:%M:%S') < states('input_datetime.config_air_emergency_covers_end')) }}
+      - condition: template
+        value_template: >
+          {{ is_state('sensor.emergency_sensor', 'On') }}
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/air/devices/covers"
+        payload: "{{{'name': 'covers',  'state': 'ON'} | to_json}}"
+
+
+  - alias: "Emergency covers OFF"
+    trigger:
+      - platform: time_pattern
+        seconds: "/5"
+    condition:
+      - condition: template
+        value_template: >
+          {{ (now().strftime('%H:%M:%S') < states('input_datetime.config_air_emergency_covers_start')) or (now().strftime('%H:%M:%S') > states('input_datetime.config_air_emergency_covers_end')) }}
+      - condition: template
+        value_template: >
+          {{ is_state('sensor.emergency_sensor', 'On') }}
+    action:
+      service: mqtt.publish
+      data:
+        topic: "greenhouse/air/devices/covers"
+        payload: "{{{'name': 'covers',  'state': 'OFF'} | to_json}}"

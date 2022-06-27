@@ -1,0 +1,9 @@
+!*.yaml
+!.gitignore
+!*.md
+!*.sh
+!*.js*
+
+.ssh
+secrets.yaml
+home-assistant.log*

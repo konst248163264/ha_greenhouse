@@ -1,0 +1,7 @@
+who_cooks:
+    name: Who cooks today
+    options:
+      - Paulus
+      - Anne Therese
+    initial: Anne Therese
+    icon: mdi:panda

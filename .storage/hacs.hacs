@@ -1,0 +1,18 @@
+{
+    "version": "6",
+    "minor_version": 1,
+    "key": "hacs.hacs",
+    "data": {
+        "view": "Grid",
+        "compact": false,
+        "onboarding_done": false,
+        "archived_repositories": [],
+        "renamed_repositories": {
+            "78wesley/Darkish-Theme": "78wesley/Home-Assistant-Darkish-Theme",
+            "DarkSir23/sensor.mylar": "WillowMist/sensor.mylar",
+            "9a4gl/hass-peltec": "9a4gl/hass-centrometal-boiler",
+            "nbogojevic/homeassistant-midea-dehumidifier-lan": "nbogojevic/homeassistant-midea-air-appliances-lan",
+            "ulic75/power-distribution-card": "ulic75/power-flow-card"
+        }
+    }
+}

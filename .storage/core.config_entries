@@ -1,0 +1,111 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "core.config_entries",
+    "data": {
+        "entries": [
+            {
+                "entry_id": "4961f4fb59e2e4f9384bd26b770b5dfe",
+                "version": 1,
+                "domain": "hassio",
+                "title": "Supervisor",
+                "data": {},
+                "options": {},
+                "pref_disable_new_entities": false,
+                "pref_disable_polling": false,
+                "source": "system",
+                "unique_id": "hassio",
+                "disabled_by": null
+            },
+            {
+                "entry_id": "460f74baeafdd4db954746d8136094ab",
+                "version": 1,
+                "domain": "met",
+                "title": "Home",
+                "data": {
+                    "track_home": true
+                },
+                "options": {},
+                "pref_disable_new_entities": false,
+                "pref_disable_polling": false,
+                "source": "onboarding",
+                "unique_id": null,
+                "disabled_by": null
+            },
+            {
+                "entry_id": "e8ad7edc5df1d43f887b781c9325519d",
+                "version": 1,
+                "domain": "hacs",
+                "title": "",
+                "data": {
+                    "token": "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"
+                },
+                "options": {},
+                "pref_disable_new_entities": false,
+                "pref_disable_polling": false,
+                "source": "user",
+                "unique_id": null,
+                "disabled_by": null
+            },
+            {
+                "entry_id": "3ea2d23d91978316becb9c37557d066f",
+                "version": 1,
+                "domain": "mqtt",
+                "title": "Mosquitto broker",
+                "data": {
+                    "broker": "core-mosquitto",
+                    "port": 1883,
+                    "username": "mqtt-user",
+                    "password": "rjcnz",
+                    "birth_message": {
+                        "topic": "homeassistant/status",
+                        "payload": "online",
+                        "qos": 0,
+                        "retain": false
+                    },
+                    "will_message": {
+                        "topic": "homeassistant/status",
+                        "payload": "offline",
+                        "qos": 0,
+                        "retain": false
+                    },
+                    "discovery": true
+                },
+                "options": {},
+                "pref_disable_new_entities": false,
+                "pref_disable_polling": false,
+                "source": "hassio",
+                "unique_id": null,
+                "disabled_by": null
+            },
+            {
+                "entry_id": "951991f7efff18b22dd416b4336acd72",
+                "version": 1,
+                "domain": "upnp",
+                "title": "RT-N12 VP",
+                "data": {
+                    "hostname": "192.168.1.1"
+                },
+                "options": {},
+                "pref_disable_new_entities": false,
+                "pref_disable_polling": false,
+                "source": "ignore",
+                "unique_id": "uuid:00fe69b4-b4a8-4354-8c55-775ca6ff1a1d::urn:schemas-upnp-org:device:InternetGatewayDevice:1",
+                "disabled_by": null
+            },
+            {
+                "entry_id": "81739e64831683cbb702597b714f8b99",
+                "version": 1,
+                "domain": "sun",
+                "title": "Sun",
+                "data": {},
+                "options": {},
+                "pref_disable_new_entities": false,
+                "pref_disable_polling": false,
+                "source": "import",
+                "unique_id": null,
+                "disabled_by": null
+            }
+        ]
+    }
+}
